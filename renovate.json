@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "forkProcessing": "enabled",
   "dependencyDashboard": true,
   "dependencyDashboardApproval": true,
   "mode": "full",
