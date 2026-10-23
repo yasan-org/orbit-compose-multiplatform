@@ -35,12 +35,12 @@ class PublishPlugin : Plugin<Project> {
                 name.set("Orbit Compose Multiplatform")
                 description.set("Compose Multiplatform port of Kiwi.com's Orbit design system.")
                 inceptionYear.set("2026")
-                url.set("https://github.com/yasanglass/orbit-compose-multiplatform/")
+                url.set("$GITHUB_URL/")
                 licenses {
                     license {
                         name.set("MIT License")
-                        url.set("https://github.com/yasanglass/orbit-compose-multiplatform/blob/main/license.md")
-                        distribution.set("https://github.com/yasanglass/orbit-compose-multiplatform/blob/main/license.md")
+                        url.set("$GITHUB_URL/blob/main/license.md")
+                        distribution.set("$GITHUB_URL/blob/main/license.md")
                     }
                 }
                 developers {
@@ -52,15 +52,18 @@ class PublishPlugin : Plugin<Project> {
                     developer {
                         id.set("contributors")
                         name.set("All Contributors")
-                        url.set("https://github.com/yasanglass/orbit-compose-multiplatform/graphs/contributors")
+                        url.set("$GITHUB_URL/graphs/contributors")
                     }
                 }
                 scm {
-                    url.set("https://github.com/yasanglass/orbit-compose-multiplatform/")
-                    connection.set("scm:git:git://github.com/yasanglass/orbit-compose-multiplatform.git")
-                    developerConnection.set("scm:git:ssh://git@github.com/yasanglass/orbit-compose-multiplatform.git")
+                    url.set("$GITHUB_URL/")
+                    connection.set("scm:git:git://github.com/$GITHUB_REPOSITORY.git")
+                    developerConnection.set("scm:git:ssh://git@github.com/$GITHUB_REPOSITORY.git")
                 }
             }
         }
     }
 }
+
+private const val GITHUB_REPOSITORY = "yasan-org/orbit-compose-multiplatform"
+private const val GITHUB_URL = "https://github.com/$GITHUB_REPOSITORY"
