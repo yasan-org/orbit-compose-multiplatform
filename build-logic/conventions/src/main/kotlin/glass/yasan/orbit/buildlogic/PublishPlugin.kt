@@ -3,6 +3,7 @@ package glass.yasan.orbit.buildlogic
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.repositories.PasswordCredentials
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
@@ -16,6 +17,11 @@ class PublishPlugin : Plugin<Project> {
             repositories.maven {
                 name = "LocalMaven"
                 url = rootProject.layout.buildDirectory.dir("localMaven").get().asFile.toURI()
+            }
+            repositories.maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/$GITHUB_REPOSITORY")
+                credentials(PasswordCredentials::class.java)
             }
         }
 
