@@ -13,10 +13,6 @@ jobs:
     permissions:
       contents: write
       packages: write
-    env:
-      ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
-      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
-      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_KEY_CONTENTS }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -35,11 +31,17 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_KEY_CONTENTS }}
 
       - name: Upload Library Artifacts to GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ github.event.release.tag_name }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_KEY_CONTENTS }}
         run: |
           ./gradlew publishAllPublicationsToLocalMavenRepository --no-configuration-cache
           repo_dir="build/localMaven/glass/yasan/orbit"
@@ -55,21 +57,44 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_GitHubPackagesUsername: ${{ github.actor }}
           ORG_GRADLE_PROJECT_GitHubPackagesPassword: ${{ secrets.GITHUB_TOKEN }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_KEY_CONTENTS }}
         run: |
           version=$(grep '^VERSION_NAME=' gradle.properties | cut -d= -f2)
           registry="https://maven.pkg.github.com/${GITHUB_REPOSITORY}/glass/yasan/orbit"
+          local_repo="build/localMaven/glass/yasan/orbit"
+          incomplete_modules() {
+            for module in ui icons illustrations; do
+              for dir in "${local_repo}/${module}" "${local_repo}/${module}"-*; do
+                artifact=$(basename "${dir}")
+                status=$(curl -s -o /dev/null -w '%{http_code}' \
+                  -u "${ORG_GRADLE_PROJECT_GitHubPackagesUsername}:${ORG_GRADLE_PROJECT_GitHubPackagesPassword}" \
+                  "${registry}/${artifact}/${version}/${artifact}-${version}.pom")
+                if [ "${status}" != "200" ]; then
+                  echo "${module}"
+                  break
+                fi
+              done
+            done
+          }
+
+          modules=$(incomplete_modules)
+          if [ -z "${modules}" ]; then
+            echo "All publications for ${version} are already on GitHub Packages"
+            exit 0
+          fi
           tasks=()
-          for module in ui icons illustrations; do
-            status=$(curl -s -o /dev/null -w '%{http_code}' \
-              -u "${ORG_GRADLE_PROJECT_GitHubPackagesUsername}:${ORG_GRADLE_PROJECT_GitHubPackagesPassword}" \
-              "${registry}/${module}/${version}/${module}-${version}.pom")
-            if [ "${status}" = "200" ]; then
-              echo "${module} ${version} already on GitHub Packages, skipping"
-            else
-              tasks+=(":${module}:publishAllPublicationsToGitHubPackagesRepository")
-            fi
+          for module in ${modules}; do
+            tasks+=(":${module}:publishAllPublicationsToGitHubPackagesRepository")
           done
-          [ ${#tasks[@]} -eq 0 ] || ./gradlew "${tasks[@]}" --no-configuration-cache
+          ./gradlew "${tasks[@]}" --continue --no-configuration-cache || true
+
+          remaining=$(incomplete_modules)
+          if [ -n "${remaining}" ]; then
+            echo "::error::Publications still missing on GitHub Packages for: ${remaining}"
+            exit 1
+          fi
 
   sample-macos:
     name: Sample App (macOS)
