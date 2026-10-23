@@ -50,8 +50,6 @@ jobs:
             gh release upload "${TAG}" "${zip_name}" --clobber
           done
 
-      # Last and non-blocking: GitHub Packages rejects re-uploading an existing version, so modules
-      # already there (re-runs, prerelease promoted to release) are skipped.
       - name: Publish to GitHub Packages
         continue-on-error: true
         env:
