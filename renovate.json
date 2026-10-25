@@ -15,6 +15,9 @@
   ],
   "assignAutomerge": true,
   "timezone": "Europe/Prague",
+  "schedule": [
+    "* 1-5 * * *"
+  ],
   "gitIgnoredAuthors": [
     "346567311+yasan-glass-bot[bot]@users.noreply.github.com"
   ],
@@ -22,9 +25,10 @@
   "automergeStrategy": "squash",
   "platformAutomerge": false,
   "vulnerabilityAlerts": {
-    "description": "Security fixes skip the release-age wait and the shared group: their own pull request, merged once CI passes",
+    "description": "Security fixes skip the release-age wait, the night window and the shared group: their own pull request, merged once CI passes",
     "groupName": null,
     "minimumReleaseAge": null,
+    "schedule": [],
     "automerge": true,
     "addLabels": [
       "security"
