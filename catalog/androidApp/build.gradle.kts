@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.jetbrains.kotlin.konan.properties.loadProperties
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -26,7 +26,7 @@ val releaseSigningProperties = rootProject.layout.projectDirectory
     .file("release/signing.properties")
     .asFile
     .takeIf { it.isFile }
-    ?.let { loadProperties(it.absolutePath) }
+    ?.let { file -> Properties().apply { file.inputStream().use(::load) } }
 
 android {
     namespace = "glass.yasan.orbit.catalog"

@@ -61,6 +61,13 @@
       "minimumReleaseAge": "28 days"
     },
     {
+      "description": "kotlinx-datetime's -compat builds are a compatibility artifact for 0.6.x consumers, not newer releases",
+      "matchPackageNames": [
+        "org.jetbrains.kotlinx:kotlinx-datetime"
+      ],
+      "allowedVersions": "!/-compat$/"
+    },
+    {
       "description": "Every update lands in one pull request, merged once CI passes; last so it overrides the presets' groups",
       "matchPackageNames": [
         "*"
