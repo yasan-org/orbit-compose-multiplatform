@@ -18,6 +18,9 @@
 >
 > This fork is primarily for preservation. While it should be stable, it is not extensively tested and is not meant for production use.
 
+> [!NOTE]
+> Try the component catalog [on the web](https://yasan-org.github.io/orbit-compose-multiplatform/) or on macOS via `brew install --cask yasan-org/tap/orbit-compose-multiplatform-catalog`.
+
 ## About Orbit
 
 [Orbit](https://orbit.kiwi) is an open-source design system that aims to bring order and consistency to
@@ -27,6 +30,14 @@ the speed and efficiency of how we design and build products.
 This library allows developers to implement Orbit in [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform/) projects targeting Android, iOS, JVM Desktop, JS, and WebAssembly.
 
 Orbit Compose builds upon the Material 3 library.
+
+## Catalog
+
+Try it [on the web](https://yasan-org.github.io/orbit-compose-multiplatform/) or install it on macOS via [Homebrew](https://github.com/yasan-org/homebrew-tap):
+
+```sh
+brew install --cask yasan-org/tap/orbit-compose-multiplatform-catalog
+```
 
 ## Setup
 
