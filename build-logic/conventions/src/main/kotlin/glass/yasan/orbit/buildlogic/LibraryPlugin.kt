@@ -90,6 +90,9 @@ class LibraryPlugin : Plugin<Project> {
             iosArm64()
             iosSimulatorArm64()
 
+            // macOS
+            macosArm64()
+
             // Desktop
             jvm("desktop") {
                 compilations.all {
@@ -121,6 +124,7 @@ class LibraryPlugin : Plugin<Project> {
                     dependsOn(commonMain)
                 }
                 val iosMain by getting { dependsOn(nonAndroidMain) }
+                val macosMain by getting { dependsOn(nonAndroidMain) }
                 val desktopMain by getting { dependsOn(nonAndroidMain) }
                 val jsMain by getting { dependsOn(nonAndroidMain) }
                 val wasmJsMain by getting { dependsOn(nonAndroidMain) }
