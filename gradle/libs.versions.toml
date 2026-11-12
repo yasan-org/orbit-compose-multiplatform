@@ -3,7 +3,7 @@
 agp = "9.5.0"
 compileSdk = "37"
 targetSdk = "37"
-minSdk = "23"
+minSdk = "24"
 
 kotlin-lang = "2.4.21"
 compose-multiplatform = "1.12.2"
