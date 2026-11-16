@@ -1151,9 +1151,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.5.464:
-  version "1.5.485"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.485.tgz#c679751783f7d6c1415aefd5b3471f833569fbaf"
-  integrity sha512-m3uadzR0Z+sR19HGWgfxoZcKv9hE/edVM9OZ+FJ4wNRyfuFtkwZJIDoehEty5sisYVwmge8lKV1tenWOyClVgw==
+  version "1.5.486"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.486.tgz#8d46dcbd2ec08d98ffd67af164f38f58ff1238da"
+  integrity sha512-rpybw4Ac4ak/An6G1Me2+61xzwobowDGyuJe71QHHOVpkZv4fPVobsLl7WH6zHSKusAMpaHxGKTpOvpy7+r3dQ==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -1586,12 +1586,12 @@ http-errors@~1.8.0:
     toidentifier "1.0.1"
 
 http-proxy-middleware@^4.1.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-4.2.1.tgz#702932a45619e6813185aae2d3d5fe72f6a934f8"
-  integrity sha512-60SmYZpPD4dPbC2GZVkVV4uP/V/cbsXSwzGQXeHWbbE3Q1XdccJpqHTg6NJ6iMpFGVA1OEry8c8kHhx4ahiU1w==
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-4.2.2.tgz#5218c29cef50ee4b5e8db63e481a285d50ecd6d7"
+  integrity sha512-GHP6tbjWsdSZbWSyqYvwPwoR76ozJ2IccVYoBR702N9vfqO0KBIwJ9vkDRErxwbb5Z6ej2Wn+9D/YitlUTseSQ==
   dependencies:
     debug "^4.4.3"
-    httpxy "^0.5.4"
+    httpxy "^0.5.6"
     is-glob "^4.0.3"
     is-plain-obj "^4.1.0"
     micromatch "^4.0.8"
@@ -1605,7 +1605,7 @@ http-proxy@^1.18.1:
     follow-redirects "^1.0.0"
     requires-port "^1.0.0"
 
-httpxy@^0.5.4:
+httpxy@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/httpxy/-/httpxy-0.5.6.tgz#954e0cb1a815c98df6f14be385ed946cd1080451"
   integrity sha512-iqc3nOxvNb5FxbhJozt8wNmHgjlmk4zzba512jMEXVwHCEBCbGAj49eGfy5PI8ts3/LFSFq8siiSNqwfY1AlfQ==
