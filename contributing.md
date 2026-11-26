@@ -44,23 +44,15 @@ To verify the implementation matches the recorded screenshots, run
 
 ## Release management
 
-### Next release's version
-
-The next release version is auto-resolved by the merged pull requests. After each push to main branch, there is a workflow that considers merged PRs since the last release and bumps/changes the next version if needed.
-
-PRs can be labeled with `semver:major`, `semver:minor` or `semver:patch` labels. The workflow considers the "biggest" needed bump. If there are no labeled PRs, it uses a minor version bump by default.
-
-The workflow also updates the next "drafted" release with the proper version title and description (list of merged PRs). Those PRs are grouped by labels like `feature`, `bug` or `chore`.
-
 ### Releasing the next version
 
-1. Manually run workflow [Baseline Profile Updater](https://github.com/kiwicom/orbit-compose/actions/workflows/baseline-profile-updater.yml) and wait for it to finish.
-2. Edit the drafted release at https://github.com/kiwicom/orbit-compose/releases.
-3. Make edits in the description — if needed.
-4. Press "Publish release" button.
+Run the [Release](https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/release.yml) workflow on `main` and pick the version to bump: `patch`, `minor` or `major`. Use its dry run option to only see the next version and its release notes.
 
-This action will:
-- publish the GitHub release,
-- tag the latest commit with the appropriate git tag,
-- build the commit and publish the libraries to Maven's staging & auto-promote it to the public,
-- build the catalog app and upload it to the GitHub release and publish it automatically on Google Play.
+The workflow runs [`scripts/release.sh`](scripts/release.sh), which will:
+- bump `VERSION_NAME` in `gradle.properties` and push the commit to `main`,
+- tag that commit with the new version,
+- create the GitHub release, with notes listing the pull requests and commits since the previous release.
+
+Publishing the release triggers the [Publish](https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/publish.yml) workflow, which will:
+- publish the libraries to Maven Central and GitHub Packages,
+- build the catalog apps and upload them to the GitHub release.

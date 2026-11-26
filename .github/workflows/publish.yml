@@ -54,6 +54,7 @@ jobs:
 
       - name: Publish to GitHub Packages
         continue-on-error: true
+        timeout-minutes: 45
         env:
           ORG_GRADLE_PROJECT_GitHubPackagesUsername: ${{ github.actor }}
           ORG_GRADLE_PROJECT_GitHubPackagesPassword: ${{ secrets.GITHUB_TOKEN }}
