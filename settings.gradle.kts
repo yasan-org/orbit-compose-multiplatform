@@ -3,6 +3,9 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        maven("https://maven-central.storage-download.googleapis.com/maven2/") { // Google mirror of Maven Central, avoids rate limits
+            allowInsecureContinueWhenDisabled.set(true)
+        }
         mavenCentral()
         google()
     }
@@ -24,6 +27,9 @@ includeBuild("./build-logic")
 dependencyResolutionManagement {
     repositories {
         google()
+        maven("https://maven-central.storage-download.googleapis.com/maven2/") { // Google mirror of Maven Central, avoids rate limits
+            allowInsecureContinueWhenDisabled.set(true)
+        }
         mavenCentral()
     }
 }
