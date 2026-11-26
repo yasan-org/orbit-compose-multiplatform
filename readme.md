@@ -2,15 +2,15 @@
 
 <p align="center">
   <a href="https://central.sonatype.com/artifact/glass.yasan.orbit/ui"><img alt="version" src="https://img.shields.io/maven-central/v/glass.yasan.orbit/ui?label=version"/></a>
-  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/yasanglass/orbit-compose-multiplatform.svg"/></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/yasan-org/orbit-compose-multiplatform.svg"/></a>
   <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-2.2.21-purple.svg?style=flat"/></a>
-  <a href="https://github.com/yasanglass/orbit-compose-multiplatform/actions/workflows/android.yml"><img alt="android" src="https://img.shields.io/github/actions/workflow/status/yasanglass/orbit-compose-multiplatform/android.yml?label=android"/></a>
-  <a href="https://github.com/yasanglass/orbit-compose-multiplatform/actions/workflows/desktop.yml"><img alt="desktop" src="https://img.shields.io/github/actions/workflow/status/yasanglass/orbit-compose-multiplatform/desktop.yml?label=desktop"/></a>
-  <a href="https://github.com/yasanglass/orbit-compose-multiplatform/actions/workflows/ios.yml"><img alt="ios" src="https://img.shields.io/github/actions/workflow/status/yasanglass/orbit-compose-multiplatform/ios.yml?label=ios"/></a>
-  <a href="https://github.com/yasanglass/orbit-compose-multiplatform/actions/workflows/js.yml"><img alt="js" src="https://img.shields.io/github/actions/workflow/status/yasanglass/orbit-compose-multiplatform/js.yml?label=js"/></a>
-  <a href="https://github.com/yasanglass/orbit-compose-multiplatform/actions/workflows/wasm.yml"><img alt="wasm" src="https://img.shields.io/github/actions/workflow/status/yasanglass/orbit-compose-multiplatform/wasm.yml?label=wasm"/></a>
-  <a href="https://github.com/yasanglass/orbit-compose-multiplatform/actions/workflows/publish.yml"><img alt="publish" src="https://img.shields.io/github/actions/workflow/status/yasanglass/orbit-compose-multiplatform/publish.yml?label=publish"/></a>
-  <a href="https://context7.com/yasanglass/orbit-compose-multiplatform/llms.txt"><img alt="Context7" src="https://img.shields.io/badge/context7-llms.txt-blue"/></a>
+  <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/android.yml"><img alt="android" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/android.yml?label=android"/></a>
+  <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/desktop.yml"><img alt="desktop" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/desktop.yml?label=desktop"/></a>
+  <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/ios.yml"><img alt="ios" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/ios.yml?label=ios"/></a>
+  <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/js.yml"><img alt="js" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/js.yml?label=js"/></a>
+  <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/wasm.yml"><img alt="wasm" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/wasm.yml?label=wasm"/></a>
+  <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/publish.yml"><img alt="publish" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/publish.yml?label=publish"/></a>
+  <a href="https://context7.com/yasan-org/orbit-compose-multiplatform/llms.txt"><img alt="Context7" src="https://img.shields.io/badge/context7-llms.txt-blue"/></a>
 </p>
 
 > [!CAUTION]
