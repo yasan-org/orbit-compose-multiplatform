@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://central.sonatype.com/artifact/glass.yasan.orbit/ui"><img alt="version" src="https://img.shields.io/maven-central/v/glass.yasan.orbit/ui?label=version"/></a>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/yasan-org/orbit-compose-multiplatform.svg"/></a>
-  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-2.2.21-purple.svg?style=flat"/></a>
+  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-2.4.21-purple.svg?style=flat"/></a>
   <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/android.yml"><img alt="android" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/android.yml?label=android"/></a>
   <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/desktop.yml"><img alt="desktop" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/desktop.yml?label=desktop"/></a>
   <a href="https://github.com/yasan-org/orbit-compose-multiplatform/actions/workflows/ios.yml"><img alt="ios" src="https://img.shields.io/github/actions/workflow/status/yasan-org/orbit-compose-multiplatform/ios.yml?label=ios"/></a>
