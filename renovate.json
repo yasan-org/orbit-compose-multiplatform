@@ -49,6 +49,18 @@
   "customManagers": [
     {
       "customType": "regex",
+      "description": "Keep the Kotlin badge in the readme on the same version as the Kotlin Gradle plugin in the version catalog",
+      "managerFilePatterns": [
+        "/^readme\\.md$/"
+      ],
+      "matchStrings": [
+        "img\\.shields\\.io/badge/Kotlin-(?<currentValue>\\d+\\.\\d+\\.\\d+)-"
+      ],
+      "depNameTemplate": "org.jetbrains.kotlin:kotlin-gradle-plugin",
+      "datasourceTemplate": "maven"
+    },
+    {
+      "customType": "regex",
       "description": "Track the Android compile SDK in the version catalog",
       "managerFilePatterns": [
         "/(^|/)gradle/libs\\.versions\\.toml$/"
