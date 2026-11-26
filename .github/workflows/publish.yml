@@ -183,6 +183,7 @@ jobs:
       - name: Build Linux + Android + Web
         run: |
           ./gradlew \
+            :catalog:desktopApp:createDistributable \
             :catalog:desktopApp:packageDeb :catalog:desktopApp:packageRpm \
             :catalog:androidApp:assembleDebug \
             :catalog:webApp:wasmJsBrowserDistribution :catalog:webApp:jsBrowserDistribution
@@ -198,6 +199,10 @@ jobs:
           cp catalog/desktopApp/build/compose/binaries/main/rpm/*.rpm "orbit-catalog-linux-${TAG}.rpm"
           gh release upload "${TAG}" "orbit-catalog-linux-${TAG}.rpm" --clobber
 
+          tar -czf "orbit-catalog-linux-x86_64-${TAG}.tar.gz" \
+            -C catalog/desktopApp/build/compose/binaries/main/app "Orbit Catalog"
+          gh release upload "${TAG}" "orbit-catalog-linux-x86_64-${TAG}.tar.gz" --clobber
+
           cp catalog/androidApp/build/outputs/apk/debug/androidApp-debug.apk "orbit-catalog-android-${TAG}-debug.apk"
           gh release upload "${TAG}" "orbit-catalog-android-${TAG}-debug.apk" --clobber
 
@@ -210,6 +215,35 @@ jobs:
           zip -r "${GITHUB_WORKSPACE}/orbit-catalog-js-${TAG}.zip" .
           cd "${GITHUB_WORKSPACE}"
           gh release upload "${TAG}" "orbit-catalog-js-${TAG}.zip" --clobber
+
+  sample-linux-arm64:
+    name: Sample App (Linux arm64)
+    needs: publish
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build Linux arm64
+        run: ./gradlew :catalog:desktopApp:createDistributable
+
+      - name: Upload to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          tar -czf "orbit-catalog-linux-arm64-${TAG}.tar.gz" \
+            -C catalog/desktopApp/build/compose/binaries/main/app "Orbit Catalog"
+          gh release upload "${TAG}" "orbit-catalog-linux-arm64-${TAG}.tar.gz" --clobber
 
   refresh-docs:
     name: Refresh Context7 Docs
